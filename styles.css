@@ -1,0 +1,64 @@
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+  font-size: 1em;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: beige;
+}
+
+.header {
+  background-color: aquamarine;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.calc-buttons {
+  display: flex;
+  flex: 1;
+  width: 60%;
+}
+
+.calc-link {
+  background-color: violet;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-container {
+  display: flex;
+  flex: 5;
+}
+
+.gutter-1 {
+  background-color: blueviolet;
+  flex: 1;
+}
+
+.gutter-2 {
+  background-color: yellowgreen;
+  flex: 1;
+}
+
+.main-content {
+  background-color: teal;
+  flex: 5;
+}
+
+.footer {
+  flex: 1;
+  background-color: crimson;
+}
