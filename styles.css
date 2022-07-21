@@ -25,13 +25,15 @@ body {
 
 .calc-buttons {
   display: flex;
-  flex: 1;
-  width: 60%;
+  width: 24%;
+  height: 32%;
+  justify-content: space-between;
 }
 
 .calc-link {
   background-color: violet;
-  flex: 1;
+  width: 40%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -56,6 +58,14 @@ body {
 .main-content {
   background-color: teal;
   flex: 5;
+}
+
+.calc-one {
+  display: none;
+}
+
+.calc-two {
+  display: block;
 }
 
 .footer {
