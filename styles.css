@@ -55,17 +55,31 @@ body {
   flex: 1;
 }
 
+/*main-content is between the gutters and holds the calculators*/
 .main-content {
+  display: flex;
   background-color: teal;
   flex: 5;
 }
 
+/*all the calc-number classes are the ones that will either be hidden or displayed when clicked*/
+.calc-one,
+.calc-two {
+  flex: 1;
+}
+
 .calc-one {
-  display: none;
+  display: block;
+  background-color: coral;
 }
 
 .calc-two {
-  display: block;
+  display: none;
+  background-color: darkblue;
+}
+
+.calculate-btn {
+  background-color: whitesmoke;
 }
 
 .footer {
