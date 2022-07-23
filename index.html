@@ -19,32 +19,50 @@
       <div class="gutter-1 gutter">gutter 1</div>
       <div class="main-content">
         <div class="calc-one">
+          <div class="unknown-selector">
+            <div class="unknown-option find-velocity-i-ua">
+              Initial Velocity
+            </div>
+            <div class="unknown-option find-velocity-f-ua">Final Velocity</div>
+            <div class="unknown-option find-time-change-ua">Change In Time</div>
+            <div class="unknown-option find-displacement-ua">Displacement</div>
+            <div class="unknown-option find-acceleration-ua">Acceleration</div>
+          </div>
           <div class="input-answer-container">
             <div class="input-fields">
               <label for="velocity-i">Initial Velocity:</label><br />
               <input
                 type="text"
                 id="velocity-i-ua"
+                class="data-input"
                 name="initial-velocity"
               /><br />
               <label for="velocity-f">Final Velocity:</label><br />
               <input
                 type="text"
                 id="velocity-f-ua"
+                class="data-input"
                 name="final-velocity"
               /><br />
               <label for="time-change">Change In Time:</label><br />
-              <input type="text" id="time-change-ua" name="time-change" /><br />
+              <input
+                type="text"
+                id="time-change-ua"
+                class="data-input"
+                name="time-change"
+              /><br />
               <label for="displacement">Displacement:</label><br />
               <input
                 type="text"
                 id="displacement-ua"
+                class="data-input"
                 name="displacement"
               /><br />
               <label for="acceleration">Acceleration:</label><br />
               <input
                 type="text"
                 id="acceleration-ua"
+                class="data-input"
                 name="acceleration"
               /><br />
               <div class="calculate-btn">Calculate</div>
@@ -53,8 +71,10 @@
               <p class="answer">Ans:</p>
             </div>
           </div>
-          <div class="error-message">
-            <p>Please enter your data in the input fields</p>
+          <div>
+            <p class="error-message">
+              Please enter your data in the input fields
+            </p>
           </div>
         </div>
         <div class="calc-two">2</div>

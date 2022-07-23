@@ -66,16 +66,42 @@ body {
 .calc-one,
 .calc-two {
   flex: 1;
+  flex-direction: column;
+  align-items: center;
 }
 
 .calc-one {
-  display: block;
+  display: flex;
   background-color: coral;
 }
 
 .calc-two {
   display: none;
   background-color: darkblue;
+}
+
+/*UNIQUE STYLING FOR CALC-ONE(UNIFORM ACCELERATION CALCULATOR)*/
+
+.unknown-selector {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2% 0 2% 0;
+}
+
+.unknown-option {
+  margin-right: 1.5%;
+}
+
+.unknown-option:last-child {
+  margin-right: 0;
+}
+
+/**************************************************************/
+
+/*styling for the data input fields*/
+.data-input {
+  width: 320px;
 }
 
 .calculate-btn {
