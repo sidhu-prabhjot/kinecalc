@@ -7,7 +7,11 @@ let speedCalc = document.querySelector(".calc-one");
 let projectileCalc = document.querySelector(".calc-two");
 
 //buttons to choose the unkown you want to find
-let findInitVelocity = document.querySelector(".find-velocity-i-ua");
+let findInitVelocityUA = document.querySelector(".find-velocity-i-ua");
+let findFinalVelocityUA = document.querySelector(".find-velocity-f-ua");
+let findTimeChangeUA = document.querySelector(".find-time-change-ua");
+let findDisplacementUA = document.querySelector(".find-displacement-ua");
+let findAccelerationUA = document.querySelector(".find-acceleration-ua");
 
 //input fields for the uniform acceleration calculator
 let initVelocityUA = document.querySelector("#velocity-i-ua");
@@ -40,12 +44,44 @@ projectileCalcBtn.addEventListener("click", () => {
 
 //NEED TO FINISH ADDING ALL THE OTHER SELECTOR BUTTONS AND CODING THE CALCULATIONS !!!!!!!!!!!!!!!!!
 
-findInitVelocity.addEventListener("click", () => {
+findInitVelocityUA.addEventListener("click", () => {
   initVelocityUA.disabled = true;
   finalVelocityUA.disabled = false;
   timeChangeUA.disabled = false;
   displacementUA.disabled = false;
   accelerationUA.disabled = false;
+});
+
+findFinalVelocityUA.addEventListener("click", () => {
+  initVelocityUA.disabled = false;
+  finalVelocityUA.disabled = true;
+  timeChangeUA.disabled = false;
+  displacementUA.disabled = false;
+  accelerationUA.disabled = false;
+});
+
+findTimeChangeUA.addEventListener("click", () => {
+  initVelocityUA.disabled = false;
+  finalVelocityUA.disabled = false;
+  timeChangeUA.disabled = true;
+  displacementUA.disabled = false;
+  accelerationUA.disabled = false;
+});
+
+findDisplacementUA.addEventListener("click", () => {
+  initVelocityUA.disabled = false;
+  finalVelocityUA.disabled = false;
+  timeChangeUA.disabled = false;
+  displacementUA.disabled = true;
+  accelerationUA.disabled = false;
+});
+
+findAccelerationUA.addEventListener("click", () => {
+  initVelocityUA.disabled = false;
+  finalVelocityUA.disabled = false;
+  timeChangeUA.disabled = false;
+  displacementUA.disabled = false;
+  accelerationUA.disabled = true;
 });
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -83,16 +119,63 @@ calculateBtnUA.addEventListener("click", () => {
   let emptyData = 0;
   for (let i = 0; i < dataTextLenArr.length; i++) {
     if (dataTextLenArr[i] == 0) {
+      //whatever value is not entered, make it an x
+      dataArr[i] = "x";
       emptyData++;
     }
 
-    if (emptyData == 2) {
+    if (emptyData == 3) {
       errorMsg.innerText = "THERE CANNOT BE MORE THAN 1 EMPTY DATA FIELD";
       return;
     }
   }
 
-  //if initial velocity is not entered then use equation 4 to solve for initial velocity
+  //if initial velocity is the unkown variable
+  if (initVelocityUA.disabled) {
+    finalAnswer = calcInitVelocityUA(
+      dataArr[1],
+      dataArr[2],
+      dataArr[3],
+      dataArr[4]
+    );
+  }
+  //if final velocity is the unkown variable
 
   answer.innerText = finalAnswer;
 });
+
+//Calculate initial velocity//////////
+function calcInitVelocityUA(
+  finalVelocity,
+  timeChange,
+  displacement,
+  acceleration
+) {
+  let initialVelocity = 0;
+
+  //calculate init velocity without finalVelocity
+  if (finalVelocity == "x") {
+    let component = -0.5 * acceleration * (timeChange * timeChange);
+    initialVelocity = displacement + component;
+    initialVelocity /= timeChange;
+  }
+  //calculate init velocity wihtout change in time
+  else if (timeChange == "x") {
+    let component = -2 * acceleration * displacement;
+    initialVelocity = finalVelocity * finalVelocity + component;
+    initialVelocity = Math.sqrt(initialVelocity);
+  }
+  //calculate init velocity without displacement
+  else if (displacement == "x") {
+    let component = -1 * acceleration * timeChange;
+    initialVelocity = finalVelocity + component;
+  }
+  //calculate init velocity without acceleration
+  else if (acceleration == "x") {
+    let component = displacement / (0.5 * timeChange);
+    initialVelocity = component - finalVelocity;
+  }
+
+  //calculated initial velocity is returned
+  return initialVelocity;
+}
