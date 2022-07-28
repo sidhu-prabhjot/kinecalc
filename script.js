@@ -179,3 +179,15 @@ function calcInitVelocityUA(
   //calculated initial velocity is returned
   return initialVelocity;
 }
+
+function calcFinalVelocityUA(
+  initVelocity,
+  timeChange,
+  displacement,
+  acceleration
+) {
+  let finalVelocity = 0;
+
+  if (initVelocity == "x") {
+  }
+}
