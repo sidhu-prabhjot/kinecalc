@@ -140,6 +140,14 @@ calculateBtnUA.addEventListener("click", () => {
     );
   }
   //if final velocity is the unkown variable
+  if (finalVelocityUA.disabled) {
+    finalAnswer = calcFinalVelocityUA(
+      dataArr[0],
+      dataArr[2],
+      dataArr[3],
+      dataArr[4]
+    );
+  }
 
   answer.innerText = finalAnswer;
 });
@@ -188,6 +196,29 @@ function calcFinalVelocityUA(
 ) {
   let finalVelocity = 0;
 
+  //calculate final velocity without initial velocity
   if (initVelocity == "x") {
+    let component = 0.5 * acceleration * Math.pow(timeChange, 2);
+    finalVelocity = displacement + component;
+    finalVelocity /= timeChange;
   }
+  //calculate final velocity without change in time
+  if (timeChange == "x") {
+    let component = 2 * acceleration * displacement;
+    let toBeRooted = Math.pow(initVelocity, 2) + component;
+    finalVelocity = Math.sqrt(toBeRooted);
+  }
+  //calculate final velocity without displacement
+  if (displacement == "x") {
+    let component = acceleration * timeChange;
+    finalVelocity = initVelocity + component;
+  }
+  //calculate final velocity without acceleration
+  if (acceleration == "x") {
+    let component = displacement / (0.5 * timeChange);
+    finalVelocity = component - initVelocity;
+  }
+
+  //calculate final velocity is returned
+  return finalVelocity;
 }
