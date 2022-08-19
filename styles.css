@@ -10,11 +10,10 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: beige;
 }
 
 .header {
-  background-color: aquamarine;
+  background-color: #f3f3f3;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -31,7 +30,7 @@ body {
 }
 
 .calc-link {
-  background-color: violet;
+  background-color: white;
   width: 40%;
   height: 100%;
   display: flex;
@@ -43,22 +42,22 @@ body {
 .content-container {
   display: flex;
   flex: 5;
+  background-color: #e0e0e0;
 }
 
 .gutter-1 {
-  background-color: blueviolet;
   flex: 1;
+  background-color: #e0e0e0;
 }
 
 .gutter-2 {
-  background-color: yellowgreen;
   flex: 1;
+  background-color: #e0e0e0;
 }
 
 /*main-content is between the gutters and holds the calculators*/
 .main-content {
   display: flex;
-  background-color: teal;
   flex: 5;
 }
 
@@ -70,11 +69,6 @@ body {
   align-items: center;
 }
 
-.calc-one {
-  display: flex;
-  background-color: coral;
-}
-
 .calc-two {
   display: none;
   background-color: darkblue;
@@ -83,7 +77,7 @@ body {
 /*UNIQUE STYLING FOR CALC-ONE(UNIFORM ACCELERATION CALCULATOR)*/
 
 .unknown-selector {
-  width: 100%;
+  width: 60%;
   display: flex;
   justify-content: center;
   margin: 2% 0 2% 0;
@@ -91,10 +85,23 @@ body {
 
 .unknown-option {
   margin-right: 1.5%;
+  border-radius: 10px;
+  background-color: #77b1a3;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.unknown-option p {
+  color: #e0e0e0;
 }
 
 .unknown-option:last-child {
   margin-right: 0;
+}
+
+.calc-one {
+  display: flex;
 }
 
 /**************************************************************/
@@ -102,13 +109,44 @@ body {
 /*styling for the data input fields*/
 .data-input {
   width: 320px;
+  margin: 2.5% 0 2.5% 0;
+  border: none; /* <-- This thing here */
+  border: solid 1px #ccc;
+  border-radius: 10px;
+  height: 20px;
+  padding: 4px;
+  font-size: 16px;
 }
 
 .calculate-btn {
-  background-color: whitesmoke;
+  margin: 2% 0 0 0;
+  background-color: #b08d6d;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.calculate-btn p {
+  color: #e0e0e0;
+}
+
+.error-message {
+  font-size: 14px;
+}
+
+.error-message-container {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 6px 0 6px;
+  border-radius: 10px;
 }
 
 .footer {
   flex: 1;
-  background-color: crimson;
+  background-color: #ffffff;
 }

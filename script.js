@@ -28,6 +28,7 @@ let answer = document.querySelector(".answer");
 
 //error message display
 let errorMsg = document.querySelector(".error-message");
+let errorMsgCont = document.querySelector(".error-message-container");
 
 //click event handler for calculator buttons that toggle between the types
 speedCalcBtn.addEventListener("click", () => {
@@ -126,6 +127,7 @@ calculateBtnUA.addEventListener("click", () => {
 
     if (emptyData == 3) {
       errorMsg.innerText = "THERE CANNOT BE MORE THAN 1 EMPTY DATA FIELD";
+      errorMsgCont.style.backgroundColor = "#ff9494";
       return;
     }
   }
@@ -222,3 +224,15 @@ function calcFinalVelocityUA(
   //calculate final velocity is returned
   return finalVelocity;
 }
+
+//initialization of uniform acceleration calculator
+function initUACalculator() {
+  initVelocityUA.disabled = true;
+  finalVelocityUA.disabled = false;
+  timeChangeUA.disabled = false;
+  displacementUA.disabled = false;
+  accelerationUA.disabled = false;
+}
+
+//initialization code for the calculators
+initUACalculator();
