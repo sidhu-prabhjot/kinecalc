@@ -150,6 +150,15 @@ calculateBtnUA.addEventListener("click", () => {
       dataArr[4]
     );
   }
+  //if timeChange is the unkown variable
+  if (timeChangeUA.disabled) {
+    finalAnswer = calcTimeChangeUA(
+      dataArr[0],
+      dataArr[1],
+      dataArr[3],
+      dataArr[4]
+    );
+  }
 
   answer.innerText = finalAnswer;
 });
@@ -181,7 +190,7 @@ function calcInitVelocityUA(
     initialVelocity = finalVelocity + component;
   }
   //calculate init velocity without acceleration
-  else if (acceleration == "x") {
+  else {
     let component = displacement / (0.5 * timeChange);
     initialVelocity = component - finalVelocity;
   }
@@ -205,24 +214,49 @@ function calcFinalVelocityUA(
     finalVelocity /= timeChange;
   }
   //calculate final velocity without change in time
-  if (timeChange == "x") {
+  else if (timeChange == "x") {
     let component = 2 * acceleration * displacement;
     let toBeRooted = Math.pow(initVelocity, 2) + component;
     finalVelocity = Math.sqrt(toBeRooted);
   }
   //calculate final velocity without displacement
-  if (displacement == "x") {
+  else if (displacement == "x") {
     let component = acceleration * timeChange;
     finalVelocity = initVelocity + component;
   }
   //calculate final velocity without acceleration
-  if (acceleration == "x") {
+  else {
     let component = displacement / (0.5 * timeChange);
     finalVelocity = component - initVelocity;
   }
 
   //calculate final velocity is returned
   return finalVelocity;
+}
+
+function calcTimeChangeUA(
+  initVelocity,
+  finalVelocity,
+  displacement,
+  acceleration
+) {
+  let timeChange = 0;
+
+  //calculate final velocity without initial velocity
+  if (initVelocity == "x") {
+    //let y = -1/2 * acceleration
+    //let n = final velocity
+    //let d = displacement
+    //calculate initial velocity then use it to calculate timeChange
+    let n = finalVelocity;
+    let d = displacement;
+    let twoYAComp = 2 * acceleration * d;
+    let sqrtComp = Math.sqrt(Math.pow(n, 2) - twoYAComp);
+    timeChange = (n - sqrtComp) / acceleration;
+  }
+
+  //calculated initial velocity is returned
+  return timeChange;
 }
 
 //initialization of uniform acceleration calculator
