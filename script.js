@@ -167,8 +167,9 @@ calculateBtnUA.addEventListener("click", () => {
       dataArr[2],
       dataArr[4]
     );
+  }
 
-  //if acceleration is the unkown variable
+  //if dispalcement is the unkown variable
   if (accelerationUA.disabled) {
     finalAnswer = calcAccelerationUA(
       dataArr[0],
@@ -338,10 +339,28 @@ function calcAccelerationUA(
 ) {
   let acceleration = 0;
 
+  //calculate acceleration without initial velocity
   if (initVelocity == "x") {
     let numerator = displacement - finalVelocity * timeChange;
     let denominator = -0.5 * Math.pow(timeChange, 2);
     acceleration = numerator / denominator;
+  }
+  //calculate acceleration without final velocity
+  else if (finalVelocity == "x") {
+    let numerator = displacement - initVelocity * timeChange;
+    let denominator = 0.5 * Math.pow(timeChange, 2);
+    acceleration = numerator / denominator;
+  }
+  //calculate acceleration without timeChange
+  else if (timeChange == "x") {
+    let numerator = Math.pow(finalVelocity, 2) - Math.pow(initVelocity, 2);
+    let denominator = 2 * displacement;
+    acceleration = numerator / denominator;
+  }
+  //calculate acceleration without displacement or with all other data
+  else {
+    let numerator = finalVelocity - initVelocity;
+    acceleration = numerator / timeChange;
   }
 
   return acceleration;
