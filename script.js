@@ -159,8 +159,33 @@ calculateBtnUA.addEventListener("click", () => {
       dataArr[4]
     );
   }
+  //if dispalcement is the unkown variable
+  if (displacementUA.disabled) {
+    finalAnswer = calcDisplacementUA(
+      dataArr[0],
+      dataArr[1],
+      dataArr[2],
+      dataArr[4]
+    );
+
+  //if acceleration is the unkown variable
+  if (accelerationUA.disabled) {
+    finalAnswer = calcAccelerationUA(
+      dataArr[0],
+      dataArr[1],
+      dataArr[2],
+      dataArr[3]
+    );
+  }
 
   answer.innerText = finalAnswer;
+
+  //reset the input fields to empty
+  initVelocityUA.value = "";
+  finalVelocityUA.value = "";
+  timeChangeUA.value = "";
+  displacementUA.value = "";
+  accelerationUA.value = "";
 });
 
 //Calculate initial velocity//////////
@@ -242,7 +267,7 @@ function calcTimeChangeUA(
 ) {
   let timeChange = 0;
 
-  //calculate final velocity without initial velocity
+  //calculate change in time without initial velocity
   if (initVelocity == "x") {
     //let y = -1/2 * acceleration
     //let n = final velocity
@@ -254,9 +279,72 @@ function calcTimeChangeUA(
     let sqrtComp = Math.sqrt(Math.pow(n, 2) - twoYAComp);
     timeChange = (n - sqrtComp) / acceleration;
   }
+  //calculate change in time without final velocity
+  else if (finalVelocity == "x") {
+    let twoADComp = 2 * acceleration * displacement;
+    let sqrtComp = Math.sqrt(Math.pow(initVelocity, 2) + twoADComp);
+    timeChange = (sqrtComp - initVelocity) / acceleration;
+  }
+  //calculate change in time without displacement
+  else if (displacement == "x") {
+    timeChange = (finalVelocity - initVelocity) / acceleration;
+  }
+  //calculate change in time without acceleration
+  else {
+    timeChange = (2 * displacement) / (initVelocity + finalVelocity);
+  }
 
   //calculated initial velocity is returned
   return timeChange;
+}
+
+function calcDisplacementUA(
+  initVelocity,
+  finalVelocity,
+  timeChange,
+  acceleration
+) {
+  let displacement = 0;
+
+  //calculate displacement without initial velocity
+  if (initVelocity == "x") {
+    displacement =
+      finalVelocity * timeChange - 0.5 * acceleration * Math.pow(timeChange, 2);
+  }
+  //calculate displacement without final velocity
+  else if (finalVelocity == "x") {
+    displacement =
+      initVelocity * timeChange + 0.5 * acceleration * Math.pow(timeChange, 2);
+  }
+  //calculate displacement without change in time
+  else if (timeChange == "x") {
+    let velocityDiffComp =
+      Math.pow(finalVelocity, 2) - Math.pow(initVelocity, 2);
+    displacement = velocityDiffComp / (2 * acceleration);
+  }
+  //calculate displacement without acceleration or when all input fields have data
+  else {
+    displacement = 0.5 * (initVelocity + finalVelocity) * timeChange;
+  }
+
+  return displacement;
+}
+
+function calcAccelerationUA(
+  initVelocity,
+  finalVelocity,
+  timeChange,
+  displacement
+) {
+  let acceleration = 0;
+
+  if (initVelocity == "x") {
+    let numerator = displacement - finalVelocity * timeChange;
+    let denominator = -0.5 * Math.pow(timeChange, 2);
+    acceleration = numerator / denominator;
+  }
+
+  return acceleration;
 }
 
 //initialization of uniform acceleration calculator
