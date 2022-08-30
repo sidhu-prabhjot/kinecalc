@@ -179,7 +179,13 @@ calculateBtnUA.addEventListener("click", () => {
     );
   }
 
-  answer.innerText = finalAnswer;
+  answer.innerText = finalAnswer + " m/s";
+
+  //reset error message
+  if (errorMsg.innerText != "") {
+    errorMsg.innerText = "";
+    errorMsgCont.style.backgroundColor = "transparent";
+  }
 
   //reset the input fields to empty
   initVelocityUA.value = "";

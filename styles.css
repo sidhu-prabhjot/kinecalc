@@ -37,6 +37,14 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.calc-link:hover {
+  background-color: #5a5a5a;
+  color: #f3f3f3;
 }
 
 .content-container {
@@ -69,11 +77,6 @@ body {
   align-items: center;
 }
 
-.calc-two {
-  display: none;
-  background-color: darkblue;
-}
-
 /*UNIQUE STYLING FOR CALC-ONE(UNIFORM ACCELERATION CALCULATOR)*/
 
 .unknown-selector {
@@ -90,6 +93,16 @@ body {
   display: flex;
   justify-content: center;
   flex: 1;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.unknown-option:hover {
+  background-color: #beccbf;
+}
+
+.unknown-option:hover p {
+  color: #5a5a5a;
 }
 
 .unknown-option p {
@@ -104,7 +117,20 @@ body {
   display: flex;
 }
 
-/**************************************************************/
+/***********UNIQUE STYLING FOR CALC-TWO****************/
+
+.calc-two {
+  display: none;
+  background-color: #e0e0e0;
+  justify-content: center;
+  align-items: center;
+}
+
+.coming-soon {
+  font-size: 24px;
+}
+
+/******************************************************/
 
 /*styling for the data input fields*/
 .data-input {
@@ -118,10 +144,18 @@ body {
   font-size: 16px;
 }
 
-.answer {
+.answer-container {
   background-color: #f7e8cb;
   border-radius: 10px;
+  padding: 4px 0 4px 0;
   display: flex;
+  justify-content: center;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.answer-label {
+  margin-right: 1%;
 }
 
 .calculate-btn {
@@ -133,6 +167,16 @@ body {
   align-items: center;
   padding: 4px;
   border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.calculate-btn:hover {
+  background-color: #ffffff;
+}
+
+.calculate-btn:hover p {
+  color: #b08d6d;
 }
 
 .calculate-btn p {
